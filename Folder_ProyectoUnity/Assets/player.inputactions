@@ -1,0 +1,123 @@
+{
+    "name": "player",
+    "maps": [
+        {
+            "name": "player",
+            "id": "5aebc7cf-bdae-4082-a5bf-611f965103e9",
+            "actions": [
+                {
+                    "name": "movimiento",
+                    "type": "Value",
+                    "id": "43f27685-5319-4e90-83ce-555f03e81ef8",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6b1329f5-e12f-424c-908e-62289a78d27e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "teclado",
+                    "action": "movimiento",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "3D Vector",
+                    "id": "b5b630ef-6694-46bd-8968-c043ac7fb5bc",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "movimiento",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "3ebdc558-0b71-41b0-a6b4-9d3e1f360186",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "teclado",
+                    "action": "movimiento",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "c09d77c0-6d4e-46aa-ac7b-3abc5653b926",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "teclado",
+                    "action": "movimiento",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "999472b4-0301-451d-bdcc-858e057b3092",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "teclado",
+                    "action": "movimiento",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "529a1017-1321-41e1-99b0-b70e7d4be3cb",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "teclado",
+                    "action": "movimiento",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "85b851fd-b416-49df-9dfd-7b1cc2be6c53",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "teclado",
+                    "action": "movimiento",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "241976d4-0d9d-4570-a683-eb4d231ae7ce",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "teclado",
+                    "action": "movimiento",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "teclado",
+            "bindingGroup": "teclado",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
