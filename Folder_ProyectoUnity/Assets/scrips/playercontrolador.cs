@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class playercontrolador : MonoBehaviour
 {
+    private Animator playeranim;
     public float hori, veti,speed;
 
     private Rigidbody rig;
@@ -29,6 +30,8 @@ public class playercontrolador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        playeranim = GetComponentInChildren<Animator>();
         rig = GetComponent<Rigidbody>();
         player = this.transform;
         thecamara = Camera.main.transform;
@@ -39,6 +42,12 @@ public class playercontrolador : MonoBehaviour
     {
         camaralogica();
         movimiento();
+        animacionlogica();
+    }
+    public void animacionlogica()
+    {
+        playeranim.SetFloat("x", newdirrecion.x);
+        playeranim.SetFloat("y", newdirrecion.y);
     }
     public void OnMoment(InputAction.CallbackContext context)
     {
