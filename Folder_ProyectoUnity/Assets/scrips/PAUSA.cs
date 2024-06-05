@@ -32,11 +32,13 @@ public class PAUSA : MonoBehaviour
         Time.timeScale = 0f;
         PAUS.SetActive(true);
         isPaused = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
     public void desactivar()
     {
         Time.timeScale = 1f;
         isPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
         PAUS.SetActive(false);
 
     }

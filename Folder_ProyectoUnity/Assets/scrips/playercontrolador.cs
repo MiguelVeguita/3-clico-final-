@@ -26,6 +26,7 @@ public class playercontrolador : MonoBehaviour
     public float maxAngle = 45f;
     public float caramaspeed=200f;
 
+    public bool pistol=false;
    
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,9 @@ public class playercontrolador : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         player = this.transform;
         thecamara = Camera.main.transform;
+        pistol = true;
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     // Update is called once per frame
@@ -48,6 +52,11 @@ public class playercontrolador : MonoBehaviour
     {
         playeranim.SetFloat("x", newdirrecion.x);
         playeranim.SetFloat("y", newdirrecion.y);
+        playeranim.SetBool("pistol", pistol);
+        if (pistol)
+        {
+            playeranim.SetLayerWeight(1, 1);
+        }
     }
     public void OnMoment(InputAction.CallbackContext context)
     {
