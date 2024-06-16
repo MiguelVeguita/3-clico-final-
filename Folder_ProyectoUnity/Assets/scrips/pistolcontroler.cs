@@ -7,13 +7,11 @@ public class pistolcontroler : MonoBehaviour
     public Transform shootspaw;
     public bool shoting = false;
     public GameObject balaprefat;
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         Debug.DrawLine(shootspaw.position, shootspaw.forward * 10f, Color.blue);

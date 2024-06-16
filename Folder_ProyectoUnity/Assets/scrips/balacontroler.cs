@@ -8,14 +8,12 @@ public class balacontroler : MonoBehaviour
     public float balapoder = 0f;
     public float life = 4f;
     float time = 0f;
-    // Start is called before the first frame update
     void Start()
     {
         balarig = GetComponent<Rigidbody>();
         balarig.velocity = this.transform.forward * balapoder;
     }
 
-    // Update is called once per frame
     void Update()
     {
         

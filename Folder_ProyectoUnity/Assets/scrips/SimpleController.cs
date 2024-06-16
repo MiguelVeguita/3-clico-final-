@@ -21,14 +21,11 @@ public class SimpleController : MonoBehaviour
 
     public void SequenceBehaviour()
     {
-        //Declaraci�n del una Sequencia de interpolaciones.
         Sequence mySequence = DOTween.Sequence();
 
-        //A�adir una Interpolaci�n a la secuencia. Se a�ade al final.
         mySequence.Append(transform.DOMove(_objective, duration).SetEase(EaseValue));
         mySequence.Append(transform.DORotate(new Vector3(90f, 90f, 90f), duration).SetEase(EaseValue));
 
-        //Insertar una Interpolaci�n en tiempo de la Sequencia.
         mySequence.Insert(duration, transform.DOScale(Vector3.one * 2.5f, duration).SetEase(EaseValue));
 
         mySequence.onComplete += Shrink;
