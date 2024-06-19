@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class playercontrolador : MonoBehaviour
 {
     private Animator playeranim;
-    public float hori, veti,speed;
+    public float hori, veti, speed;
 
     private Rigidbody rig;
     Transform player;
@@ -24,10 +24,10 @@ public class playercontrolador : MonoBehaviour
     public float camararotacionspeed = 200f;
     public float minAngle = -45f;
     public float maxAngle = 45f;
-    public float caramaspeed=200f;
+    public float caramaspeed = 200f;
 
-    public bool pistol=false;
-   
+    public bool pistol = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +45,12 @@ public class playercontrolador : MonoBehaviour
     void Update()
     {
         camaralogica();
-        movimiento();
+
         animacionlogica();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rig.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        }
     }
     public void animacionlogica()
     {
@@ -67,22 +71,24 @@ public class playercontrolador : MonoBehaviour
     }
     public void movimiento()
     {
-       
-        Vector3 dirrecion = rig.velocity;
 
-        float thetime = Time.deltaTime;
+        Vector3 velocy = Vector3.zero;
+        if (hori != 0 || veti != 0)
+        {
+            Vector3 direction = (transform.forward * veti + transform.right * hori);
+            velocy = direction * speed;
+
+        }
+        velocy.y = rig.velocity.y;
+        rig.velocity = velocy;
 
         newdirrecion = new Vector2(hori, veti);
 
-        Vector3 side = speed * hori * thetime * player.right;
-        Vector3 forward = speed * veti * thetime * player.forward;
-        Vector3 finaldirecion = side + forward;
-        rig.velocity = finaldirecion;
-
+       
     }
     private void FixedUpdate()
     {
-       // rig.velocity = new Vector3(hori *10, rig.velocity.y, veti * 10);
+        movimiento();
     }
     public void camaralogica()
     {
