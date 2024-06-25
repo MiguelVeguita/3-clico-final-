@@ -49,7 +49,7 @@ public class playercontrolador : MonoBehaviour
         animacionlogica();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rig.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            rig.AddForce(Vector3.up * 2, ForceMode.Impulse);
         }
     }
     public void animacionlogica()
