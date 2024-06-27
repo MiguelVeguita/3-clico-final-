@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class CharacterUIController : MonoBehaviour
 {
     public Image characterImage;
-    public TextMeshProUGUI lifeText;
+    public TextMeshProUGUI comportamiento;
     public TextMeshProUGUI characteristicsText;
+    public TextMeshProUGUI nombre;
+    public TextMeshProUGUI habilidades;
 
     public void UpdateUI(EnemyStats character)
     {
@@ -18,15 +20,23 @@ public class CharacterUIController : MonoBehaviour
 
         }
 
-        if (lifeText != null)
+        if (comportamiento != null)
         {
-            lifeText.text = "Vida: " + character.comportamiento.ToString(); 
+            comportamiento.text = character.comportamiento; 
 
         }
 
         if (characteristicsText != null)
         {
-            characteristicsText.text = "Características: " + character.descripcion; 
+            characteristicsText.text = character.descripcion; 
+        }
+        if (nombre != null)
+        {
+            nombre.text = character.nombre;
+        }
+        if (habilidades != null)
+        {
+            habilidades.text = character.habilidades;
         }
     }
 }

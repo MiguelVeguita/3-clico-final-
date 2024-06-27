@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -73,11 +74,11 @@ public class EnemyMover : MonoBehaviour
         }
 
         // Actualiza la animación dependiendo de si el enemigo está en movimiento o no
-        if (animator != null)
+       /* if (animator != null)
         {
             bool isMoving = navMeshAgent.velocity.sqrMagnitude > 0.1f || (!navMeshAgent.enabled && current != null && Vector3.Distance(transform.position, current.Value.position) > 0.1f);
             animator.SetBool("IsWalking", isMoving);
-        }
+        }*/
     }
 
     void MoverEntrePuntos()
@@ -121,7 +122,13 @@ public class EnemyMover : MonoBehaviour
             }
         }
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "bala")
+        {
+            Destroy(this.gameObject);
+        }
+    }
     void OnDrawGizmosSelected()
     {
         // Dibuja un gizmo para visualizar el radio de detección en el editor

@@ -17,4 +17,4 @@ MonoBehaviour:
   comportamiento: corre por todos lados
   habilidades: ninguna en especial
   e: 0
-  imagenSprite: {fileID: 0}
+  imagenSprite: {fileID: 21300000, guid: 1b503648cf4e53247810ac179eeefcc2, type: 3}

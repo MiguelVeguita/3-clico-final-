@@ -17,4 +17,4 @@ MonoBehaviour:
   comportamiento: este solo suele andar por el bosque
   habilidades: cuando ve a un humano comienza a perserguirlo ganando velocidad
   e: 0
-  imagenSprite: {fileID: 0}
+  imagenSprite: {fileID: 21300000, guid: 626ff283a0c3cb04ab226bd1291ebef9, type: 3}

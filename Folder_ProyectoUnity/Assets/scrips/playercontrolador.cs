@@ -6,19 +6,14 @@ using UnityEngine.InputSystem;
 
 public class playercontrolador : MonoBehaviour
 {
-    private Animator playeranim;
-    public float hori, veti, speed;
+   
+    public float hori, veti, speed,vida;
 
     private Rigidbody rig;
     Transform player;
-    private Vector2 newdirrecion;
-
-    public Transform camaraAXIS;
-    public Transform camaraTRAK;
-    private Transform thecamara;
-
-    private float rotY = 0f;
-    private float rotX = 0f;
+ 
+    //private float rotY = 0f;
+   // private float rotX = 0f;
 
 
     public float camararotacionspeed = 200f;
@@ -26,17 +21,20 @@ public class playercontrolador : MonoBehaviour
     public float maxAngle = 45f;
     public float caramaspeed = 200f;
 
-    public bool pistol = false;
+    public GameObject bala;
+    public Transform spaw;
+    public float fuerzabala = 1500f;
+    public float ratio = 0.5f;
+
+    private float shottime = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        playeranim = GetComponentInChildren<Animator>();
         rig = GetComponent<Rigidbody>();
         player = this.transform;
-        thecamara = Camera.main.transform;
-        pistol = true;
+     
         Cursor.lockState = CursorLockMode.Locked;
 
     }
@@ -44,24 +42,25 @@ public class playercontrolador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        camaralogica();
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (Time.time > shottime)
+            {
+                GameObject balanueva;
+                balanueva=Instantiate(bala,spaw.position,spaw.rotation);
+                balanueva.GetComponent<Rigidbody>().AddForce(spaw.forward * fuerzabala);
+                shottime = Time.time+ratio;
+                Destroy(balanueva, 2);
 
-        animacionlogica();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rig.AddForce(Vector3.up * 2, ForceMode.Impulse);
+            rig.AddForce(Vector3.up * 10, ForceMode.Impulse);
         }
     }
-    public void animacionlogica()
-    {
-        playeranim.SetFloat("x", newdirrecion.x);
-        playeranim.SetFloat("y", newdirrecion.y);
-        playeranim.SetBool("pistol", pistol);
-        if (pistol)
-        {
-            playeranim.SetLayerWeight(1, 1);
-        }
-    }
+   
     public void OnMoment(InputAction.CallbackContext context)
     {
         hori = context.ReadValue<Vector3>().x;
@@ -82,7 +81,6 @@ public class playercontrolador : MonoBehaviour
         velocy.y = rig.velocity.y;
         rig.velocity = velocy;
 
-        newdirrecion = new Vector2(hori, veti);
 
        
     }
@@ -90,25 +88,16 @@ public class playercontrolador : MonoBehaviour
     {
         movimiento();
     }
-    public void camaralogica()
+    private void OnCollisionEnter(Collision collision)
     {
-        float mousex = Input.GetAxis("Mouse X");
-        float mousey = Input.GetAxis("Mouse Y");
-        float thetime = Time.deltaTime;
-
-        rotY += mousey * thetime * camararotacionspeed;
-        rotX = mousex * thetime * camararotacionspeed;
-
-        player.Rotate(0, rotX, 0);
-
-        rotY = math.clamp(rotY, minAngle, maxAngle);
-
-        Quaternion localrotacion = Quaternion.Euler(-rotY, 0, 0);
-        camaraAXIS.localRotation = localrotacion;
-
-        thecamara.position = Vector3.Lerp(thecamara.position, camaraTRAK.position, caramaspeed * thetime);
-        thecamara.rotation = Quaternion.Lerp(thecamara.rotation, camaraTRAK.rotation, caramaspeed * thetime);
-
-
+        if (collision.gameObject.tag == "zombi")
+        {
+            vida = vida - 1;
+           /* if (vida < 0)
+            {
+                
+            }*/
+        }
     }
+
 }
