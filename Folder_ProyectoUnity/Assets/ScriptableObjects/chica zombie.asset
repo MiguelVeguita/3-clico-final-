@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0206e16af9110ef4ea95a8cf1c1055dc, type: 3}
   m_Name: chica zombie
   m_EditorClassIdentifier: 
-  vida: 5
-  caracteristicasTexto: una chica zombie :v
-  imagenSprite: {fileID: 21300000, guid: 2d79911fe86e8b64bbb43b91728dd8b3, type: 3}
+  nombre: Zombie femenino
+  descripcion: " Cabello largo y enmara\xF1ado, piel p\xE1lida y en descomposici\xF3n,
+    ropa desgarrada."
+  comportamiento: caminan arrastrandose por el piso
+  habilidades: nada en especial
+  e: 0
+  imagenSprite: {fileID: 0}

@@ -20,13 +20,13 @@ public class CharacterUIController : MonoBehaviour
 
         if (lifeText != null)
         {
-            lifeText.text = "Vida: " + character.vida.ToString(); 
+            lifeText.text = "Vida: " + character.comportamiento.ToString(); 
 
         }
 
         if (characteristicsText != null)
         {
-            characteristicsText.text = "Características: " + character.caracteristicasTexto; 
+            characteristicsText.text = "Características: " + character.descripcion; 
         }
     }
 }

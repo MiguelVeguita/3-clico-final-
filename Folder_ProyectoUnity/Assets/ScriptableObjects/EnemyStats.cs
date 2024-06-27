@@ -5,8 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyStats", menuName = "Enemy/Stats")]
 public class EnemyStats : ScriptableObject
 {
-    public int vida;
-    public string caracteristicasTexto;
+    public string nombre;
+    public string descripcion;
+    public string comportamiento;
+    public string habilidades;
+    public int e;
     public Sprite imagenSprite;
 
 }
