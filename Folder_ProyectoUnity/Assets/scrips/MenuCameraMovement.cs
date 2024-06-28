@@ -1,41 +1,41 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.Rendering;
-
 using DG.Tweening;
-public class MenuCameraMovement : MonoBehaviour
-{
-    public Transform[] waypoints; 
-    public float transitionDuration = 5f; 
-    public float delayBetweenPoints = 2f; 
-    public bool loop = true; 
 
-    private int currentWaypointIndex = 0; 
+public class CameraPingPong : MonoBehaviour
+{
+    public Transform pointA; // Punto A
+    public Transform pointB; // Punto B
+    public float transitionDuration = 5f; // Duración del movimiento entre puntos
+    public float delayAtPoints = 2f; // Retraso en cada punto
 
     void Start()
     {
-        
-        MoveToNextWaypoint();
+        if (pointA != null && pointB != null)
+        {
+            StartCoroutine(MoveCameraLoop()); // Inicia la coroutine del movimiento en bucle
+        }
+        else
+        {
+            Debug.LogError("Por favor, asigna los puntos A y B en el inspector.");
+        }
     }
 
-    void MoveToNextWaypoint()
+    IEnumerator MoveCameraLoop()
     {
-        if (waypoints.Length == 0) return;
+        while (true) // Bucle infinito
+        {
+            // Mueve la cámara de A a B
+            transform.DOMove(pointB.position, transitionDuration)
+                     .SetEase(Ease.InOutSine); // Movimiento suave
 
-       
-        currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            yield return new WaitForSeconds(transitionDuration + delayAtPoints); // Espera el tiempo del movimiento + retraso
 
-        
-        transform.DOMove(waypoints[currentWaypointIndex].position, transitionDuration)
-                 .SetEase(Ease.InOutSine)
-                 .OnComplete(() =>
-                 {
-                     if (loop || currentWaypointIndex < waypoints.Length - 1)
-                     {
-                         MoveToNextWaypoint();
-                     }
-                 });
+            // Mueve la cámara de B a A
+            transform.DOMove(pointA.position, transitionDuration)
+                     .SetEase(Ease.InOutSine); // Movimiento suave
+
+            yield return new WaitForSeconds(transitionDuration + delayAtPoints); // Espera el tiempo del movimiento + retraso
+        }
     }
 }

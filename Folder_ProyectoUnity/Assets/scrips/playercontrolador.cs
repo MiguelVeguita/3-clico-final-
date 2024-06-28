@@ -55,10 +55,10 @@ public class playercontrolador : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+      /*  if (Input.GetKeyDown(KeyCode.Space))
         {
             rig.AddForce(Vector3.up * 10, ForceMode.Impulse);
-        }
+        }*/
     }
    
     public void OnMoment(InputAction.CallbackContext context)

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - zombi
   - bala
+  - engranaje
+  - player
   layers:
   - Default
   - TransparentFX

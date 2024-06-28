@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PAUSA : MonoBehaviour
 {
@@ -53,5 +54,9 @@ public class PAUSA : MonoBehaviour
         sonidos.SetActive(true);
         listaene.SetActive(false);
     }
-
+    public void inicio()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("inicio");
+    }
 }
