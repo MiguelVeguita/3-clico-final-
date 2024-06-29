@@ -16,10 +16,10 @@ public class playercontrolador : MonoBehaviour
    // private float rotX = 0f;
 
 
-    public float camararotacionspeed = 200f;
+    public float camararotacionspeed = 500f;
     public float minAngle = -45f;
     public float maxAngle = 45f;
-    public float caramaspeed = 200f;
+    public float caramaspeed = 500f;
 
     public GameObject bala;
     public Transform spaw;

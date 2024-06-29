@@ -72,19 +72,19 @@ public class UiMenu : MonoBehaviour
     public void credi()
     {
         mainContainer.DOAnchorPos(creditsTargetPosition, transitionDuration)
-                     .SetEase(Ease.InOutSine);
+                     .SetEase(Ease.InOutSine).SetUpdate(true);
     }
 
     public void regrecredi()
     {
         mainContainer.DOAnchorPos(mainContainerStartPos, transitionDuration)
-                     .SetEase(Ease.InOutSine);
+                     .SetEase(Ease.InOutSine).SetUpdate(true);
     }
     public void ShowOptions()
     {
         // Mueve el contenedor principal hacia la izquierda para mostrar el panel de opciones
         mainContainer.DOAnchorPos(optionsTargetPosition, transitionDuration)
-                     .SetEase(Ease.InOutSine);
+                     .SetEase(Ease.InOutSine).SetUpdate(true);
     }
 
     // Método para ocultar el panel de opciones
@@ -92,7 +92,7 @@ public class UiMenu : MonoBehaviour
     {
         // Mueve el contenedor principal de vuelta a su posición inicial para mostrar el menú principal
         mainContainer.DOAnchorPos(mainContainerStartPos, transitionDuration)
-                     .SetEase(Ease.InOutSine);
+                     .SetEase(Ease.InOutSine).SetUpdate(true);
     }
     public void salirrr()
     {

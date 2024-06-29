@@ -19,12 +19,12 @@ public class botonesMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        transform.DOScale(originalScale * scaleAmount, animationDuration).SetEase(Ease.OutBounce);
+        transform.DOScale(originalScale * scaleAmount, animationDuration).SetEase(Ease.OutBounce).SetUpdate(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        transform.DOScale(originalScale, animationDuration).SetEase(Ease.OutBounce);
+        transform.DOScale(originalScale, animationDuration).SetEase(Ease.OutBounce).SetUpdate(true);
     }
     public void loadjuego()
     {

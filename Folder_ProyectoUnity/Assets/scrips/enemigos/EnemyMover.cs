@@ -16,6 +16,8 @@ public class EnemyMover : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private bool persiguiendoJugador = false;
     private Animator animator; // Referencia al Animator
+    public float nexataque;
+    public float coldwun=2;
 
     private void Awake()
     {
@@ -47,6 +49,19 @@ public class EnemyMover : MonoBehaviour
 
     void Update()
     {
+        if(Vector3.Distance(transform.position, jugador.position) < 10 && Time.time>= nexataque)
+        {
+
+            animator.SetBool("IsAttacking", true);
+            Debug.Log("ataque");
+            nexataque = Time.time + coldwun;
+        }
+        else
+        {
+           
+            animator.SetBool("IsAttacking", false);
+        }
+
         if (persiguiendoJugador)
         {
             // Si está persiguiendo al jugador, usa el NavMeshAgent para seguir al jugador
@@ -73,12 +88,7 @@ public class EnemyMover : MonoBehaviour
             }
         }
 
-        // Actualiza la animación dependiendo de si el enemigo está en movimiento o no
-       /* if (animator != null)
-        {
-            bool isMoving = navMeshAgent.velocity.sqrMagnitude > 0.1f || (!navMeshAgent.enabled && current != null && Vector3.Distance(transform.position, current.Value.position) > 0.1f);
-            animator.SetBool("IsWalking", isMoving);
-        }*/
+     
     }
 
     void MoverEntrePuntos()
