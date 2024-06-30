@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public class EnemyMover : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class EnemyMover : MonoBehaviour
     public Transform[] puntos; // Array de puntos para la patrulla
     public Transform jugador; // Referencia al transform del jugador
     public float speed = 2.0f;
+    public float life;
     public float rotationSpeed = 5.0f; // Velocidad de rotación
     public float detectionRadius = 5.0f; // Radio de detección para comenzar la persecución
     private DoubleCircularList<Transform>.Node current;
@@ -18,6 +20,9 @@ public class EnemyMover : MonoBehaviour
     private Animator animator; // Referencia al Animator
     public float nexataque;
     public float coldwun=2;
+    private bool muerte=false;
+    public float timedead = 0;
+    public float timeup;
 
     private void Awake()
     {
@@ -49,6 +54,17 @@ public class EnemyMover : MonoBehaviour
 
     void Update()
     {
+        if (muerte == true)
+        {
+            navMeshAgent.enabled = false;
+
+            timedead = Time.deltaTime+timedead;
+            if (timedead >= timeup)
+            {
+
+                Destroy(this.gameObject);
+            }
+        }
         if(Vector3.Distance(transform.position, jugador.position) < 10 && Time.time>= nexataque)
         {
 
@@ -136,8 +152,18 @@ public class EnemyMover : MonoBehaviour
     {
         if (collision.gameObject.tag == "bala")
         {
-            Destroy(this.gameObject);
+            life--;
+            if (life <= 0)
+            {
+                animator.SetBool("dead", true);
+                muerte = true;
+            }
+            
         }
+    }
+    public void activardead()
+    {
+
     }
     void OnDrawGizmosSelected()
     {

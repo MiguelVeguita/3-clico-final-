@@ -258,6 +258,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6882751}
   m_CullTransparentMesh: 1
+--- !u!4 &41757351 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ba6254c418b8ea469d1acb2c7be3eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 1051640348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &47935347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,7 +2908,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ba6254c418b8ea469d1acb2c7be3eae,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1930550587}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ba6254c418b8ea469d1acb2c7be3eae, type: 3}
 --- !u!1 &1055564504
@@ -3340,6 +3350,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126101013}
   m_CullTransparentMesh: 1
+--- !u!1001 &1128391683
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 41757351}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.296311
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35477
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35477
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.826
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.422
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.309
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.49839807
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.49839807
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.50159687
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.50159687
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.367
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 71df23f1468d23547982a578dcdeacc1,
+        type: 3}
+      propertyPath: m_Name
+      value: Toyota_MR2_SW20_Rev_2_(1993)_by_Nominous
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71df23f1468d23547982a578dcdeacc1, type: 3}
 --- !u!1 &1181968678
 GameObject:
   m_ObjectHideFlags: 0
@@ -5556,6 +5649,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923875112}
   m_CullTransparentMesh: 1
+--- !u!4 &1930550587 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 71df23f1468d23547982a578dcdeacc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128391683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1931730357
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,11 +11,12 @@ public class playercontrolador : MonoBehaviour
 
     private Rigidbody rig;
     Transform player;
- 
+
     //private float rotY = 0f;
-   // private float rotX = 0f;
+    // private float rotX = 0f;
 
-
+    public AudioClip sonbala;
+    public AudioSource audioplayer;
     public float camararotacionspeed = 500f;
     public float minAngle = -45f;
     public float maxAngle = 45f;
@@ -46,6 +47,7 @@ public class playercontrolador : MonoBehaviour
         {
             if (Time.time > shottime)
             {
+                
                 GameObject balanueva;
                 balanueva=Instantiate(bala,spaw.position,spaw.rotation);
                 balanueva.GetComponent<Rigidbody>().AddForce(spaw.forward * fuerzabala);
