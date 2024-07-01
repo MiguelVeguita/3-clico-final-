@@ -28,6 +28,6 @@ public class botonesMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
     public void loadjuego()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("cinematica");
     }
 }

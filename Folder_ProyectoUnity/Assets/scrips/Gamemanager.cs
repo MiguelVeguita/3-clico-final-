@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 
 
@@ -13,20 +14,31 @@ public class GameManager : MonoBehaviour
     public EnemyStats[] characters;
     public float puntitos=0f;
     public TextMeshProUGUI puntitostexto;
-
-
+    public float life = 10;
+    public Slider vi;
+    public AudioClip pie;
+    private AudioSource sour;
+    public static event Action yes;
+    public GameObject COCHESITO;    
+   
     private int currentCharacterIndex = 0;
     void OnEnable()
     {
         engranaje.yep += total;
+        EnemyMover.ataque += vidita;
+        BeizerMovement.ataque2 += vidita;
     }
 
     void OnDisable()
     {
         engranaje.yep -= total;
+        EnemyMover.ataque -= vidita;
+        BeizerMovement.ataque2 -= vidita;
+
     }
     private void Start()
     {
+        sour= GetComponent<AudioSource>();
         uiController.UpdateUI(characters[currentCharacterIndex]);
     }
 
@@ -50,10 +62,18 @@ public class GameManager : MonoBehaviour
     {
         if (puntitos >= 3)
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            SceneManager.LoadScene("ganaste");
+            COCHESITO.SetActive(true);
+           // Cursor.lockState = CursorLockMode.Confined;
+            yes?.Invoke();
+           // SceneManager.LoadScene("ganaste");
         }
         puntitostexto.text = "Engranajes X:"+puntitos.ToString();
 
     }
+    public void vidita()
+    {
+        life = life - 1;
+        vi.value=life;
+    }
+   
 }

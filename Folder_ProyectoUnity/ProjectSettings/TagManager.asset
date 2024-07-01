@@ -8,6 +8,7 @@ TagManager:
   - bala
   - engranaje
   - player
+  - carro
   layers:
   - Default
   - TransparentFX

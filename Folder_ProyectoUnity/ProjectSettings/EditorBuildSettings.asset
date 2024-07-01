@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ganaste.unity
     guid: 0d2b6b7de8d410242bbcd6c0822ae6fa
+  - enabled: 1
+    path: Assets/Scenes/cinematica.unity
+    guid: 11b62f281dba5f446bdda98679a37863
   m_configObjects: {}

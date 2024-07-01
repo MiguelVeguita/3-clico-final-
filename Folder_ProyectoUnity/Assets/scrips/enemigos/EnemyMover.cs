@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,6 +24,7 @@ public class EnemyMover : MonoBehaviour
     private bool muerte=false;
     public float timedead = 0;
     public float timeup;
+    public static event Action ataque;
 
     private void Awake()
     {
@@ -71,6 +73,7 @@ public class EnemyMover : MonoBehaviour
             animator.SetBool("IsAttacking", true);
             Debug.Log("ataque");
             nexataque = Time.time + coldwun;
+            ataque?.Invoke();
         }
         else
         {
