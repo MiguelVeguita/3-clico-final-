@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class objetosgirar : MonoBehaviour
 {
-    public float duracionEncogimiento = 1f; // Duración del encogimiento en segundos
-    public float duracionRotacion = 0.5f; // Duración de la rotación en segundos
-    public Vector3 escalaFinal = new Vector3(0.5f, 0.5f, 0.5f); // Escala final a la que se encojerá
-    public Ease easeType = Ease.OutQuad; // Tipo de curva de animación
+    public float duracionEncogimiento = 1f;
+    public float duracionRotacion = 0.5f; 
+    public Vector3 escalaFinal = new Vector3(0.5f, 0.5f, 0.5f); 
+    public Ease easeType = Ease.OutQuad; 
 
-    private Vector3 escalaInicial; // Escala inicial del objeto
-
+    private Vector3 escalaInicial; 
     void Start()
     {
-        escalaInicial = transform.localScale; // Guardar la escala inicial del objeto
-        InvokeRepeating("EjecutarAnimacion", 0f, 2f); // Llama a EjecutarAnimacion cada 5 segundos
+        escalaInicial = transform.localScale; 
+        InvokeRepeating("EjecutarAnimacion", 0f, 2f); 
     }
 
     void EjecutarAnimacion()

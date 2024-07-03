@@ -4,12 +4,12 @@ using UnityEngine.AI;
 
 public class xombinormales : MonoBehaviour
 {
-    public Transform jugador; // Referencia al transform del jugador asignado desde el Inspector
-    public float detectionRadius = 10.0f; // Radio de detección para el ataque
-    public float attackCooldown = 2f; // Tiempo de espera entre ataques
-    public float life = 5f; // Vida del enemigo
-    public float deathTime = 2f; // Tiempo hasta desaparecer después de morir
-    public AudioClip attackSound; // Clip de sonido para el ataque
+    public Transform jugador; 
+    public float detectionRadius = 10.0f; 
+    public float attackCooldown = 2f; 
+    public float life = 5f; 
+    public float deathTime = 2f; 
+    public AudioClip attackSound; 
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
@@ -22,12 +22,10 @@ public class xombinormales : MonoBehaviour
 
     private void Awake()
     {
-        // Inicializa los componentes necesarios
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
-        // Asegúrate de que el NavMeshAgent esté activado
         navMeshAgent.enabled = true;
     }
 
@@ -36,12 +34,11 @@ public class xombinormales : MonoBehaviour
         if (isDead)
         {
             HandleDeath();
-            return; // Salir del método Update si el enemigo está muerto
+            return; 
         }
 
         navMeshAgent.SetDestination(jugador.position);
         float distanceToPlayer = Vector3.Distance(transform.position, jugador.position);
-        // Intentar atacar si está dentro del rango y el cooldown ha pasado
         if (distanceToPlayer < navMeshAgent.stoppingDistance && Time.time >= nextAttackTime)
         {
             AttackPlayer();
@@ -54,16 +51,12 @@ public class xombinormales : MonoBehaviour
 
     private void AttackPlayer()
     {
-        // Reproducir animación de ataque
         animator.SetTrigger("Attack");
         audioSource.PlayOneShot(attackSound);
-        // Reproducir sonido de ataque
 
 
-        // Establecer el próximo tiempo de ataque
         nextAttackTime = Time.time + attackCooldown;
 
-        // Invocar el evento de ataque si hay suscriptores
         ataque?.Invoke();
     }
 
@@ -91,13 +84,12 @@ public class xombinormales : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        navMeshAgent.enabled = false; // Desactivar el NavMeshAgent
-        animator.SetTrigger("Die"); // Reproducir animación de muerte
+        navMeshAgent.enabled = false; 
+        animator.SetTrigger("Die"); 
     }
 
     private void OnDrawGizmosSelected()
     {
-        // Dibuja un gizmo para visualizar el radio de detección en el editor
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }

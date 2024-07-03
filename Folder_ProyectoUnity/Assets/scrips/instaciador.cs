@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Instanciador : MonoBehaviour
 {
-    public GameObject objetoPrefab; // Objeto que quieres instanciar
-    public Transform puntoInstancia; // Punto desde donde quieres instanciar el objeto
-    public float intervalo = 5f; // Intervalo en segundos entre cada instancia
+    public GameObject objetoPrefab;
+    public Transform puntoInstancia;
+    public float intervalo = 5f; 
 
     void Start()
     {
-        // Verificar que el objeto prefab y el punto de instancia no sean nulos
         if (objetoPrefab != null && puntoInstancia != null)
         {
-            // Llamar al método InstanciarCada5Segundos repetidamente cada 'intervalo' segundos
             InvokeRepeating("InstanciarCada5Segundos", 0f, intervalo);
         }
         else

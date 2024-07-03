@@ -99,7 +99,7 @@ public class playercontrolador : MonoBehaviour
             vida = vida - 1;
             if(vida <= 0)
             {
-                morir?.Invoke();
+                //morir?.Invoke();
             }
         
         }
