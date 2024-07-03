@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
 
+
+
 public class EnemyMover : MonoBehaviour
 {
     public DoubleCircularList<Transform> nodos = new DoubleCircularList<Transform>();
@@ -24,6 +26,8 @@ public class EnemyMover : MonoBehaviour
     private bool muerte=false;
     public float timedead = 0;
     public float timeup;
+    public AudioClip sonidoAtaque; // Clip de sonido para el ataque
+    private AudioSource audioSource;
     public static event Action ataque;
 
     private void Awake()
@@ -43,6 +47,7 @@ public class EnemyMover : MonoBehaviour
 
         // Inicializa el Animator
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -70,7 +75,12 @@ public class EnemyMover : MonoBehaviour
         if(Vector3.Distance(transform.position, jugador.position) < 10 && Time.time>= nexataque)
         {
 
+
             animator.SetBool("IsAttacking", true);
+            if (sonidoAtaque != null && audioSource != null)
+            {
+                audioSource.Play();
+            }
             Debug.Log("ataque");
             nexataque = Time.time + coldwun;
             ataque?.Invoke();
@@ -164,10 +174,7 @@ public class EnemyMover : MonoBehaviour
             
         }
     }
-    public void activardead()
-    {
-
-    }
+    
     void OnDrawGizmosSelected()
     {
         // Dibuja un gizmo para visualizar el radio de detección en el editor

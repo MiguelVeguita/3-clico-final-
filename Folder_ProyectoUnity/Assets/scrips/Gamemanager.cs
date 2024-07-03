@@ -19,8 +19,10 @@ public class GameManager : MonoBehaviour
     public AudioClip pie;
     private AudioSource sour;
     public static event Action yes;
-    public GameObject COCHESITO;    
-   
+    public GameObject COCHESITO;
+    public GameObject enemy;
+    public static event Action morir;
+
     private int currentCharacterIndex = 0;
     void OnEnable()
     {
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
         if (puntitos >= 3)
         {
             COCHESITO.SetActive(true);
+            enemy.SetActive(true);
            // Cursor.lockState = CursorLockMode.Confined;
             yes?.Invoke();
            // SceneManager.LoadScene("ganaste");
@@ -74,6 +77,12 @@ public class GameManager : MonoBehaviour
     {
         life = life - 1;
         vi.value=life;
+        if(life <= 0)
+        {
+            SceneManager.LoadScene("perdiste");
+            morir?.Invoke();
+        }
+      
     }
    
 }

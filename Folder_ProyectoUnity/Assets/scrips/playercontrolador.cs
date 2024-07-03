@@ -4,6 +4,8 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System;
+
 
 public class playercontrolador : MonoBehaviour
 {
@@ -27,6 +29,7 @@ public class playercontrolador : MonoBehaviour
 
     private float shottime = 0f;
     public bool listo=false;
+    public static event Action morir;
     void OnEnable()
     {
         GameManager.yes += la;
@@ -94,6 +97,11 @@ public class playercontrolador : MonoBehaviour
         if (collision.gameObject.CompareTag("zombi"))
         {
             vida = vida - 1;
+            if(vida <= 0)
+            {
+                morir?.Invoke();
+            }
+        
         }
         if (collision.gameObject.CompareTag("carro"))
         {

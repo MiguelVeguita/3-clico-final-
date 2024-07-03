@@ -14,11 +14,11 @@ public class UiMenu : MonoBehaviour
     public float fadeDuration = 1.0f;
     public float fadeInDuration = 1.0f;
 
-    public RectTransform mainContainer; // Cambiado a RectTransform
-    public Vector2 targetYposi;  // Cambiado a Vector2
-    public Vector2 targetYnega;  // Cambiado a Vector2
-    public Vector2 targetXposi;  // Cambiado a Vector2
-    public Vector2 targetXnega;  // Cambiado a Vector2
+    public RectTransform mainContainer; 
+    public Vector2 targetYposi;  
+    public Vector2 targetYnega;  
+    public Vector2 targetXposi;  
+    public Vector2 targetXnega; 
 
     public float duration = 1f;
     public Ease easeType = Ease.InOutQuad;

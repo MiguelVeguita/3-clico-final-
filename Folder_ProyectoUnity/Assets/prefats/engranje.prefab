@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: engranaje
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 31d9184242c224745a974ef71a0da44e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -85,6 +90,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -9032292249957889358}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 31d9184242c224745a974ef71a0da44e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6013047024175959538}
   m_SourcePrefab: {fileID: 100100000, guid: 31d9184242c224745a974ef71a0da44e, type: 3}
 --- !u!1 &3618282426451719050 stripped
 GameObject:
@@ -125,3 +134,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0548058, y: 1.0784566, z: 0.29103574}
   m_Center: {x: 0.00000002980233, y: 0.000000029802322, z: 0.14551787}
+--- !u!114 &-6013047024175959538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3618282426451719050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c4620c9e8f0e84b838e35d439e3b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duracionEncogimiento: 1
+  duracionRotacion: 0.5
+  escalaFinal: {x: 0.5, y: 0.5, z: 0.5}
+  easeType: 6

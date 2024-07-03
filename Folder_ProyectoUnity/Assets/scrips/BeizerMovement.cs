@@ -21,10 +21,13 @@ public class BeizerMovement : MonoBehaviour
     public float nexataque;
     public float coldwun = 2;
     public static event Action ataque2;
+    public float life;
+    public bool muerte;
 
 
     private void Start()
     {
+       
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         // Desactivamos inicialmente el NavMeshAgent
@@ -35,7 +38,7 @@ public class BeizerMovement : MonoBehaviour
     }
     private void Update() 
     {
-        if (tiemposalto < 4)
+        if (tiemposalto < 3)
         {
             animator.SetBool("salto", true);
             sampleTime += Time.deltaTime * speed;
@@ -82,6 +85,19 @@ public class BeizerMovement : MonoBehaviour
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
             }
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "bala")
+        {
+            life--;
+            if (life <= 0)
+            {
+                animator.SetBool("dead", true);
+                muerte = true;
+            }
+
         }
     }
 }

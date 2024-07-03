@@ -4,38 +4,84 @@ using DG.Tweening;
 
 public class CameraPingPong : MonoBehaviour
 {
-    public Transform pointA; // Punto A
-    public Transform pointB; // Punto B
-    public float transitionDuration = 5f; // Duración del movimiento entre puntos
-    public float delayAtPoints = 2f; // Retraso en cada punto
+    public Transform[] waypoints; // Array de puntos de referencia
+    public float moveDuration = 2.0f; // Duración para mover entre puntos
+    public Ease moveEase = Ease.Linear; // Tipo de suavizado para el movimiento
+
+    private int currentWaypointIndex = 0; // Índice del waypoint actual
+    private bool movingForward = true; // Dirección de movimiento
 
     void Start()
     {
-        if (pointA != null && pointB != null)
+        if (waypoints.Length > 0)
         {
-            StartCoroutine(MoveCameraLoop()); // Inicia la coroutine del movimiento en bucle
+            // Iniciar el movimiento a través de los waypoints
+            MoveToNextWaypoint();
         }
         else
         {
-            Debug.LogError("Por favor, asigna los puntos A y B en el inspector.");
+            Debug.LogWarning("No se han asignado waypoints.");
         }
     }
 
-    IEnumerator MoveCameraLoop()
+    void MoveToNextWaypoint()
     {
-        while (true) // Bucle infinito
+        if (waypoints.Length == 0)
         {
-            // Mueve la cámara de A a B
-            transform.DOMove(pointB.position, transitionDuration)
-                     .SetEase(Ease.InOutSine); // Movimiento suave
-
-            yield return new WaitForSeconds(transitionDuration + delayAtPoints); // Espera el tiempo del movimiento + retraso
-
-            // Mueve la cámara de B a A
-            transform.DOMove(pointA.position, transitionDuration)
-                     .SetEase(Ease.InOutSine); // Movimiento suave
-
-            yield return new WaitForSeconds(transitionDuration + delayAtPoints); // Espera el tiempo del movimiento + retraso
+            return;
         }
+
+        // Mueve la cámara al siguiente waypoint
+        transform.DOMove(waypoints[currentWaypointIndex].position, moveDuration)
+            .SetEase(moveEase)
+            .OnComplete(OnWaypointReached); // Al completar, llama a OnWaypointReached
+    }
+
+    void OnWaypointReached()
+    {
+        // Verificar si estamos en el último waypoint moviéndonos hacia adelante
+        if (movingForward)
+        {
+            if (currentWaypointIndex < waypoints.Length - 1)
+            {
+                currentWaypointIndex++;
+            }
+            else
+            {
+                // Cambiar la dirección a hacia atrás
+                movingForward = false;
+                currentWaypointIndex--;
+            }
+        }
+        else // Si estamos moviéndonos hacia atrás
+        {
+            if (currentWaypointIndex > 0)
+            {
+                currentWaypointIndex--;
+            }
+            else
+            {
+                // Cambiar la dirección a hacia adelante
+                movingForward = true;
+                currentWaypointIndex++;
+            }
+        }
+
+        // Llamar de nuevo para mover al siguiente waypoint
+        MoveToNextWaypoint();
+    }
+
+    // Método opcional para detener el movimiento de la cámara
+    public void StopCameraMovement()
+    {
+        DOTween.Kill(transform);
+    }
+
+    // Método opcional para iniciar el movimiento desde el principio
+    public void RestartCameraMovement()
+    {
+        currentWaypointIndex = 0; // Reiniciar el índice al primer waypoint
+        movingForward = true; // Reiniciar la dirección a hacia adelante
+        MoveToNextWaypoint(); // Llamar para iniciar el movimiento
     }
 }
